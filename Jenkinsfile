@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        JENKINS_OPTS = '-Djenkins.model.Jenkins.logStartupPerformance=true -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=300 -Dorg.jenkinsci.plugins.s3.S3ServiceList.BUCKET=jenkinsartifactbucket'
+    }
+
+
     stages {
         stage('Archive Files') {
             steps {
