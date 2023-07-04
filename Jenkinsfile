@@ -19,7 +19,7 @@ pipeline {
         stage('Push to S3') {
             steps {
                 script {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-jenkins-test-demo', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-s3-artifact', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         // Upload the tar archive to S3
                         s3Upload(bucket: 'jenkinsartifactbucket', includePathPattern: 'repo_files.tar.gz', workingDir: '.')
                     }
